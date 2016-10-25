@@ -5,6 +5,12 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'sqlite3'
 gem 'puma', '~> 3.0'
 
+gem 'jbuilder', '~> 2.6'
+
+group :test do
+  gem 'json-schema', '~> 2.7'
+end
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails', '~> 4.7'
