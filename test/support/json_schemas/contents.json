@@ -1,0 +1,9 @@
+{
+  "type": "array",
+  "items": {
+    "type": [
+      { "$ref": "season.json" },
+      { "$ref": "movie.json" }
+    ]
+  }
+}
