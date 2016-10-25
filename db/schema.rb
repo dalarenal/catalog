@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20161026095252) do
     t.index ["content_id"], name: "index_purchase_options_on_content_id"
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.datetime "expires_at"
+    t.integer  "user_id"
+    t.integer  "purchase_option_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["purchase_option_id"], name: "index_purchases_on_purchase_option_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.datetime "created_at", null: false
