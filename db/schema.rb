@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025200649) do
+ActiveRecord::Schema.define(version: 20161025201503) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "title"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 20161025200649) do
     t.text     "plot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "episodes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "plot"
+    t.integer  "number"
+    t.integer  "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_episodes_on_content_id"
   end
 
   create_table "users", force: :cascade do |t|
