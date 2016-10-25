@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": ["id", "title", "plot", "episodes"],
+  "properties": {
+    "id" : { "type" : "integer" },
+    "title" : { "type" : "string" },
+    "plot" : { "type" : "string" },
+    "episodes" : {
+      "type" : "array",
+      "items" : {
+        "type": "object",
+        "required": ["id", "title", "plot", "number"],
+        "properties": {
+          "id" : { "type" : "integer" },
+          "number" : { "type" : "integer" },
+          "title" : { "type" : "string" },
+          "plot" : { "type" : "string" }
+        }
+      }
+    }
+  }
+}
