@@ -1,4 +1,8 @@
 class PurchasesController < ApplicationController
+  def index
+    @purchases = current_user.purchases.active.order(:expires_at)
+  end
+
   def create
     @purchase = Purchase.new(
       purchase_params.merge(

@@ -1,6 +1,19 @@
 require 'test_helper'
 
 class PurchasesControllerTest < ActionDispatch::IntegrationTest
+  def test_index
+    user = create(:user)
+    create_list(:purchase, 2, :with_movie, user: user)
+    create_list(:purchase, 3, :with_season, user: user)
+    create_list(:purchase, 4, :with_movie, user: user, expires_at: Time.current - 1.day)
+
+    get purchases_url, as: :json
+
+    assert_response :success
+    assert_equal 5, JSON.parse(body).count
+    assert_json_schema('purchases', body)
+  end
+
   def test_create
     create(:user)
     purchase_option = create(:purchase_option, content: create(:movie))
