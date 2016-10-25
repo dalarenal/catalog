@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "required": ["id", "price", "quality", "content"],
+  "properties": {
+    "id" : { "type" : "integer" },
+    "price" : { "type" : "decimal" },
+    "quality" : { "type" : "string" },
+    "content": {
+      "type": [
+        { "$ref": "season.json" },
+        { "$ref": "movie.json" }
+      ]
+    }
+  }
+}

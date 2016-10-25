@@ -1,4 +1,6 @@
 class Purchase < ApplicationRecord
+  EXPIRES_TIME_DEFAULT = 2.days
+
   belongs_to :user
   belongs_to :purchase_option
   has_one :content, through: :purchase_option
