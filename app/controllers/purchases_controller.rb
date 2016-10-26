@@ -4,11 +4,12 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    purchase_option = PurchaseOption.find_by_id!(params[:purchase_option_id])
+
     @purchase = Purchase.new(
-      purchase_params.merge(
-        user_id: current_user.id,
-        expires_at: Time.current + Purchase::EXPIRES_TIME_DEFAULT
-      )
+      purchase_option: purchase_option,
+      user: current_user,
+      expires_at: Time.current + Purchase::EXPIRES_TIME_DEFAULT
     )
 
     if @purchase.save
@@ -16,11 +17,5 @@ class PurchasesController < ApplicationController
     else
       render json: @purchase.errors, status: :unprocessable_entity
     end
-  end
-
-  private
-
-  def purchase_params
-    params.require(:purchase).permit(:purchase_option_id)
   end
 end
