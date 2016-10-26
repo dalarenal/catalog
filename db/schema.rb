@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025201503) do
+ActiveRecord::Schema.define(version: 20161026095252) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "title"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20161025201503) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content_id"], name: "index_episodes_on_content_id"
+  end
+
+  create_table "purchase_options", force: :cascade do |t|
+    t.decimal  "price"
+    t.string   "quality"
+    t.integer  "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_purchase_options_on_content_id"
   end
 
   create_table "users", force: :cascade do |t|
